@@ -58,13 +58,19 @@ const App = () =>{
       <Text style={{fontSize:25,textAlign:'center'}}>Component in Loop with FlatList</Text>
       <FlatList 
       data ={users}
-      renderItem={({item})=><View>
-        <Text style={styles.item}>{item.id}</Text>
-        <Text style={styles.item}>{item.name}</Text>
-        <Text style={styles.item}>{item.email}</Text>
-      </View>}
+      renderItem={({item})=><UserData item={item} />}
       />
     </View>
+  );
+}
+const UserData = (props)=>{
+  const item = props.item;
+  return(
+    <View style={styles.Box}>
+    <Text style={styles.item}>{item.id}</Text>
+    <Text style={styles.item}>{item.name}</Text>
+    <Text style={styles.item}>{item.email}</Text>
+  </View>
   );
 }
 const styles = StyleSheet.create({
@@ -73,7 +79,8 @@ const styles = StyleSheet.create({
     color:'orange',
     flex:1,
     margin:2,
-   
+    backgroundColor:'purple',
+    textAlign: 'center',
   },
   Box:{
     flexDirection:'row',
